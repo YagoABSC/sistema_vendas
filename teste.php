@@ -1,11 +1,29 @@
 <?php
 
     require_once "./backend/dao/UsuarioDAO.php";
+    require_once "./backend/dao/GrupoUsuarioDAO.php";
 
 
     $usuarioDAO = new UsuarioDAO();
+    $grupoUsuarioDAO = new GrupoUsuarioDAO();
 
-    // print_r($usuarioDAO->getById(2));
+    $usuario = $usuarioDAO->getById(2);
+    echo "<pre>";
+    echo $usuario;
+    echo "</pre>";
 
-    echo $usuarioDAO->getById(2);
+    $usuario = $usuarioDAO->getUsuarioWithGrupo(2);
+    echo "<pre>";
+    echo $usuario;
+    echo "</pre>";
+
+    $grupoUsuario = $grupoUsuarioDAO->getGrupoUsuarioWithPermissions($usuario->getGrupoUsuario()->getId());
+    echo "<pre>";
+    echo $grupoUsuario;
+    echo "</pre>";
+//    $usuario = $usuarioDAO->getUsuarioWithGrupo(2);
+
+//    echo $usuario;
+
+
 ?>
